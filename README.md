@@ -31,7 +31,7 @@ rails generate notify:install
 To allow your users to fetch their notifications, include the appropriate
 modules in your user's class :
 
-```bash
+```ruby
 class User
   include Notify::Notifier, Notify::Notifiable
 end
