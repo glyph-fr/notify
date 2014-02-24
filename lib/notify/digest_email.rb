@@ -1,8 +1,5 @@
 module Notify
-  class BatchEmail
-    mattr_accessor :subject
-    @@subject = ->(recipient, count) { "You have #{ count } new notifications" }
-
+  class DigestEmail
     attr_accessor :recipient, :notifications
 
     def initialize recipient, notifications
@@ -10,16 +7,8 @@ module Notify
       @notifications = notifications
     end
 
-    def subject
-      @subject ||= @@subject.call(recipient, notifications_count)
-    end
-
     def notifications_count
       @notifications_count ||= notifications.length
-    end
-
-    def recipient_email
-      recipient.email
     end
   end
 end

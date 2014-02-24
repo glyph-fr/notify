@@ -1,0 +1,7 @@
+<div class="notifications">
+  <% @notifications.each do |notification| %>
+    <%= render partial: "notify/notifications/#{ notification.partial_key }/notification", locals: { notification: notification } %>
+  <% end %>
+</div>
+
+<%= paginate(@notifications) %>

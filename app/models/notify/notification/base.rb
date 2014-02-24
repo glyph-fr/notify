@@ -23,6 +23,10 @@ module Notify
         update_attributes!(emailed: true)
       end
 
+      def partial_key
+        @partial_key ||= self.class.name.demodulize.underscore
+      end
+
       def self.notify res, attributes
         attributes.merge!(resource_type: res.class.name, resource_id: res.id)
         Notify::Jobs::Create.new.async.perform(self, attributes)
