@@ -45,6 +45,15 @@ module Notify
         "mail.text.erb",
         "app/views/notify/notifications_digests_mailer/digest.text.erb"
       )
+
+      copy_file(
+        "mail.html.erb",
+        "app/views/notify/notifications_digests_mailer/digest.html.erb"
+      )
+    end
+
+    def copy_locale_file
+      copy_file("notify.en.yml", "config/locales/notify.en.yml")
     end
 
     def mount_engine

@@ -26,4 +26,11 @@ Notify.config do |config|
   # Defaults to the mailer class that is generated during installation
   #
   # config.mailer_class = "Notify::NotificationsMailer"
+
+  # Allows adding a prefix to all e-mail subjects, when sending your
+  # notifications
+  #
+  # Defaults to no prefix
+  #
+  # config.mailer.subject_prefix = "[Your App Name]"
 end

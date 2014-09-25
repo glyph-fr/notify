@@ -19,13 +19,13 @@ module Notify
         notifications.group_by(&:recipient)
       end
 
-      def notify_recipient recipient, notifications
+      def notify_recipient(recipient, notifications)
         email = email_for(recipient, notifications)
         Notify.mailer.digest(email).deliver
         notifications.each(&:emailed!)
       end
 
-      def email_for recipient, notifications
+      def email_for(recipient, notifications)
         DigestEmail.new(recipient, notifications)
       end
     end

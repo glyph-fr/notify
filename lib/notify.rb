@@ -1,3 +1,6 @@
+require "sucker_punch"
+require "kaminari"
+
 require "notify/engine"
 
 module Notify

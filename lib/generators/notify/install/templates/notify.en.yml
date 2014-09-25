@@ -1,0 +1,10 @@
+en:
+  notify:
+    mailer:
+      digest:
+        subject: "You have %{count} unread notifications"
+      shared:
+        footer: "This is an automatic message, please don't try to send a reply"
+
+    notification:
+      summary: "New %{type} notification"

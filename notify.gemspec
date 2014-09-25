@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0"
   s.add_dependency "sucker_punch", "~> 1.0"
+  s.add_dependency "kaminari"
 
   s.add_development_dependency "sqlite3"
 end

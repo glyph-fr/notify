@@ -1,9 +1,8 @@
-Hey <%= @recipient.name %>, you have <%= pluralize(@email.notifications_count, "unread notification") %> !
+<%= t('notify.mailer.digest.subject', count: @email.notifications_count) %>
 
 <%- @notifications.each do |notification| -%>
-<%= render partial: "notify/notifications/#{ notification.partial_key }/mail_item", locals: { notification: notification } %>
+<%= notification.summary %>
 <%- end -%>
 
-
 -------------------------------------------------------------------------
-This is an automatic message, please don't try to send a reply
+<%= t('notify.mailer.shared.footer') %>

@@ -27,7 +27,14 @@ module Notify
         @partial_key ||= self.class.name.demodulize.underscore
       end
 
-      def self.notify res, attributes
+      def summary
+        I18n.t(
+          'notify.notification.summary',
+          type: self.class.model_name.human
+        )
+      end
+
+      def self.notify(res, attributes)
         attributes.merge!(resource_type: res.class.name, resource_id: res.id)
         Notify::Jobs::Create.new.async.perform(self, attributes)
       end
