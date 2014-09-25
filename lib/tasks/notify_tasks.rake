@@ -11,6 +11,6 @@ namespace :notify do
       raise "missing FREQUENCY argument, please add FREQUENCY=<frequency>"
     end
 
-    Notify::MailableNotifications.new(frequency_value).email_digest
+    Notify::MailableNotifications.new(frequency_value).send_emails
   end
 end

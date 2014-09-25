@@ -9,7 +9,7 @@ module Notify
   autoload :Notifiable, "notify/notifiable"
   autoload :Notifier, "notify/notifier"
   autoload :Jobs, "notify/jobs"
-  autoload :DigestEmail, "notify/digest_email"
+  autoload :Emails, "notify/emails"
   autoload :MailableNotifications, "notify/mailable_notifications"
 
   def self.table_prefix
@@ -18,9 +18,9 @@ module Notify
 
   # ----------- Configuration -----------
 
-  # The mailer used to send notification digests
+  # The mailer used to send notifications
   mattr_accessor :mailer_class
-  @@mailer_class = "Notify::NotificationsDigestsMailer"
+  @@mailer_class = "Notify::NotificationsMailer"
 
   def self.mailer
     @@mailer ||= @@mailer_class.constantize

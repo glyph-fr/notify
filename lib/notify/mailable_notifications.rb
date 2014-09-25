@@ -6,8 +6,25 @@ module Notify
       @frequency = frequency.to_s
     end
 
-    def email_digest
-      Notify::Jobs::Email.new(notifications).notify if notifications.length > 0
+    def send_emails
+      send_digests
+      send_notifications
+    end
+
+    def send_digests
+      digestible_notifications = notifications.digestible
+
+      if (digestible_notifications).length > 0
+        Notify::Jobs::NotificationsDigestEmail.new(
+          digestible_notifications
+        ).notify
+      end
+    end
+
+    def send_notifications
+      notifications.not_digestible.each do |notification|
+        Notify::Jobs::NotificationEmail.new(notification).notify
+      end
     end
 
     private

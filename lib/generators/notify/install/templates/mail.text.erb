@@ -1,8 +1,0 @@
-<%= t('notify.mailer.digest.subject', count: @email.notifications_count) %>
-
-<%- @notifications.each do |notification| -%>
-<%= notification.summary %>
-<%- end -%>
-
--------------------------------------------------------------------------
-<%= t('notify.mailer.shared.footer') %>

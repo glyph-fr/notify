@@ -38,17 +38,40 @@ module Notify
 
       copy_file(
         "mailer.rb",
-        "app/mailers/notify/notifications_digests_mailer.rb"
+        "app/mailers/notify/notifications_mailer.rb"
+      )
+
+      # Copy mailer digest email templates
+      copy_file(
+        "digest_mail.text.erb",
+        "app/views/notify/notifications_mailer/digest.text.erb"
       )
 
       copy_file(
-        "mail.text.erb",
-        "app/views/notify/notifications_digests_mailer/digest.text.erb"
+        "digest_mail.html.erb",
+        "app/views/notify/notifications_mailer/digest.html.erb"
+      )
+
+      # Copy mailer notification email templates
+      copy_file(
+        "notification_mail.text.erb",
+        "app/views/notify/notifications_mailer/notification.text.erb"
       )
 
       copy_file(
-        "mail.html.erb",
-        "app/views/notify/notifications_digests_mailer/digest.html.erb"
+        "notification_mail.html.erb",
+        "app/views/notify/notifications_mailer/notification.html.erb"
+      )
+
+      # Copy mailer layouts
+      copy_file(
+        "mail_layout.text.erb",
+        "app/views/layouts/notifications_mailer.text.erb"
+      )
+
+      copy_file(
+        "mail_layout.html.erb",
+        "app/views/layouts/notifications_mailer.html.erb"
       )
     end
 

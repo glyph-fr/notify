@@ -3,6 +3,8 @@ en:
     mailer:
       digest:
         subject: "You have %{count} unread notifications"
+      notification:
+        subject: "You have an unread notification"
       shared:
         footer: "This is an automatic message, please don't try to send a reply"
 

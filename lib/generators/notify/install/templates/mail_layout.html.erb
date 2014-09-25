@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-      <%= t('notify.mailer.digest.subject', count: @email.notifications_count) %>
+      <%= @subject %>
     </title>
   </head>
 
@@ -18,20 +18,11 @@
               <tr>
                 <td align="center" valign="top">
                   <h1>
-                    <%= t('notify.mailer.digest.subject', count: @email.notifications_count) %>
+                    <%= @subject %>
                   </h1>
 
-                  <ul>
-                    <%- @notifications.each do |notification| -%>
-                    <li>
-                      <%= notification.summary %>
-                    </li>
-                    <%- end -%>
-                  </ul>
-                </td>
-              </tr>
-              <tr>
-                <td align="center" valign="top">
+                  <%= yield %>
+
                   <hr/>
                   <%= t('notify.mailer.shared.footer') %>
                 </td>

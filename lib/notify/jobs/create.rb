@@ -30,7 +30,7 @@ module Notify
       end
 
       def notify recipient
-        model.create!(attributes.merge(recipient_id: recipient.id))
+        model.create!(attributes.merge(recipient: recipient))
       end
     end
   end
