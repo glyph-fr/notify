@@ -3,8 +3,7 @@ module Notify
     class Base < ActiveRecord::Base
       self.table_name = "notify_notifications"
 
-      validates_presence_of :type, :resource_id, :resource_type, :recipient_id,
-        :author_id
+      validates :type, :resource, :recipient, presence: true
 
       belongs_to :resource, polymorphic: true
       belongs_to :recipient, class_name: "User"
