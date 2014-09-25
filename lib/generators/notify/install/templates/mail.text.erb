@@ -1,9 +1,9 @@
 Hey <%= @recipient.name %>, you have <%= pluralize(@email.notifications_count, "unread notification") %> !
 
-<% @notifications.each do |notification| %>
-<%= render partial: "notify/notifications_digests_mailer/notifications/#{ notification.partial_key }", locals: { notification: notification } %>
-<% end %>
+<%- @notifications.each do |notification| -%>
+<%= render partial: "notify/notifications/#{ notification.partial_key }/mail_item", locals: { notification: notification } %>
+<%- end -%>
 
 
 -------------------------------------------------------------------------
-This is an automatic message, please don't try to send an answer
+This is an automatic message, please don't try to send a reply

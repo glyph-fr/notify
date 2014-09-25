@@ -1,6 +1,5 @@
 module Notify
   class NotificationsController < Notify::ApplicationController
-
     layout false
 
     def index
@@ -44,7 +43,9 @@ module Notify
     private
 
     def notifiable
-      @notifiable ||= send(Notify.notifiable_controller_method)
+      @notifiable ||= if (method = Notify.notifiable_controller_method)
+        send(method)
+      end
     end
   end
 end
