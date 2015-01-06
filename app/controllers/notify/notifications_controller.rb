@@ -27,6 +27,7 @@ module Notify
       respond_to do |format|
         format.html { redirect_to action: "index" }
         format.json { render json: notification }
+        format.js
       end
     end
 
