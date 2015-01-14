@@ -7,8 +7,12 @@ module Notify
     end
 
     def send_emails
-      send_digests
-      send_notifications
+      begin
+        send_digests
+        send_notifications
+      rescue => exception
+        ExceptionNotifier.notify_exception(e)
+      end
     end
 
     def send_digests
