@@ -11,7 +11,7 @@ module Notify
         send_digests
         send_notifications
       rescue => exception
-        ExceptionNotifier.notify_exception(e)
+        ExceptionNotifier.notify_exception(exception)
       end
     end
 
