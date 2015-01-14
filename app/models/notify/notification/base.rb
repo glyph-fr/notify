@@ -3,6 +3,7 @@ module Notify
     class Base < ActiveRecord::Base
       self.table_name = "notify_notifications"
 
+      cattr_accessor :current_user
       class_attribute :digestible_notification
       self.digestible_notification = true
 
