@@ -26,7 +26,7 @@ module Notify
       end
 
       def recipients
-        model.recipients_for(resource)
+        model.recipients_excluding_current_user_for(resource)
       end
 
       def notify recipient

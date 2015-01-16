@@ -60,6 +60,30 @@ module Notify
 end
 ```
 
+You can automatically remove the current user from the notification's recipients
+list by assigning the current_user to a request-bound global store.
+
+By doing this, the current user will never get notified of any notification
+that is fired during an action he's done.
+
+```ruby
+class ApplicationController < ActionController::Base
+  before_filter :store_current_user
+
+  private
+
+  def store_current_user
+    Notify::Base.current_user = current_user
+
+    # This internally uses the `request_store` gem, so you can alternatively
+    # assign the current user to the RequestStore.store directly, if you're
+    # already using the `request_store` gem in your app :
+    #
+    #   RequestStore.store[:current_user] = current_user
+  end
+end
+```
+
 ### Firing notifications
 
 You'll now be able to create notifications :

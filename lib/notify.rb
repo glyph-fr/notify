@@ -1,5 +1,6 @@
 require "sucker_punch"
 require "kaminari"
+require "request_store"
 
 require "notify/engine"
 
