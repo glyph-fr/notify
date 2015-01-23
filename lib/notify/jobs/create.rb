@@ -3,11 +3,12 @@ module Notify
     class Create
       include SuckerPunch::Job
 
-      attr_reader :model, :attributes
+      attr_reader :model, :attributes, :current_user
 
-      def perform model, attributes
+      def perform(model, attributes, current_user)
         @model = model
         @attributes = attributes
+        @current_user = current_user
 
         ActiveRecord::Base.connection_pool.with_connection do
           recipients.each do |recipient|
@@ -25,11 +26,12 @@ module Notify
         end
       end
 
+      # Get recipients for a given resource, and exclude current_user if set
       def recipients
-        model.recipients_excluding_current_user_for(resource)
+        model.recipients_for(resource) - [current_user]
       end
 
-      def notify recipient
+      def notify(recipient)
         model.create!(attributes.merge(recipient: recipient))
       end
     end
