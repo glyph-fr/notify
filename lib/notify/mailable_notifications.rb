@@ -36,7 +36,7 @@ module Notify
     def notifications
       Notify::Notification::Base.unread.not_emailed.reject do |notification|
         notification.resource_id.present? && notification.resource.blank?
-      end.destroy_all
+      end.each &:destroy!
       
       @notifications ||= Notify::Notification::Base
         .includes(recipient: :notification_frequency)
