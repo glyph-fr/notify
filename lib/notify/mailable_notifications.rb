@@ -34,7 +34,7 @@ module Notify
     private
 
     def notifications
-      Notify::Notification::Base.unread.not_emailed.reject do |notification|
+      Notify::Notification::Base.unread.not_emailed.select do |notification|
         notification.resource_id.present? && notification.resource.blank?
       end.each &:destroy!
       
