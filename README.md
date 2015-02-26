@@ -136,7 +136,7 @@ Here are the defaults :
 
 ```ruby
 Notify.config do |config|
-  config.notification_frequency.frequencies = [:asap, :hourly, :daily]
+  config.notification_frequency.frequencies = [:asap, :hourly, :daily, :weekly]
   config.notification_frequency.default_frequency = :hourly
 end
 ```

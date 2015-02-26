@@ -1,7 +1,7 @@
 module Notify
   class NotificationFrequency < ActiveRecord::Base
     mattr_accessor :frequencies
-    @@frequencies = [:asap, :hourly, :daily]
+    @@frequencies = [:asap, :hourly, :daily, :weekly]
 
     mattr_accessor :default_frequency
     @@default_frequency = :hourly

@@ -4,7 +4,7 @@ Notify.config do |config|
   #
   # The below frequencies are the default ones
   #
-  # config.notification_frequency.frequencies = [:asap, :hourly, :daily]
+  # config.notification_frequency.frequencies = [:asap, :hourly, :daily, :weekly]
 
   # Set the default frequency assigned to notifiable users that didn't choose
   # a frequency themselves.
