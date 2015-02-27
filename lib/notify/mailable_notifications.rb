@@ -11,10 +11,10 @@ module Notify
         send_digests
         send_notifications
       rescue => exception
-        if Rails.env.production?
-          ExceptionNotifier.notify_exception(exception)
-        else
+        if Rails.env.development?
           raise exception
+        else
+          ExceptionNotifier.notify_exception(exception)
         end
       end
     end
