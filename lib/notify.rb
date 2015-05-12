@@ -57,18 +57,16 @@ module Notify
   def self.notification_class name
     class_name = name.camelize
 
-    if production?
+    # Use proper class lookup in eager loaded environments, but fallback to
+    # rescuing NameError for development and other lazy loaded environments
+    if Rails.application.config.cache_classes
       Notify::Notification.const_defined?(class_name) &&
         Notify::Notification.const_get(class_name)
-    else # Fix for development env that doesn't eager load models
+    else
       begin
         Notify::Notification.const_get(class_name)
       rescue NameError
       end
     end
-  end
-
-  def self.production?
-    Rails.env == "production"
   end
 end
