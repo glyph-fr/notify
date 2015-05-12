@@ -11,7 +11,11 @@ module Notify
         send_digests
         send_notifications
       rescue => exception
-        ExceptionNotifier.notify_exception(exception)
+        if Rails.env.development?
+          raise exception
+        else
+          ExceptionNotifier.notify_exception(exception)
+        end
       end
     end
 
@@ -34,6 +38,10 @@ module Notify
     private
 
     def notifications
+      Notify::Notification::Base.unread.not_emailed.select do |notification|
+        !notification.resource
+      end.each &:destroy!
+      
       @notifications ||= Notify::Notification::Base
         .includes(recipient: :notification_frequency)
         .where(notify_notification_frequencies: { value: frequency })

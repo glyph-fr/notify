@@ -48,7 +48,7 @@ module Notify
 
       def self.notify(res, attributes)
         attributes.merge!(resource_type: res.class.name, resource_id: res.id)
-        Notify::Jobs::Create.new.async.perform(self, attributes)
+        Notify::Jobs::Create.new.async.perform(self, attributes, current_user)
       end
 
       def self.current_user
@@ -57,10 +57,6 @@ module Notify
 
       def self.current_user=(user)
         RequestStore.store[:current_user] = user
-      end
-
-      def self.recipients_excluding_current_user_for(resource)
-        recipients_for(resource) - current_user
       end
 
       private
