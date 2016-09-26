@@ -54,8 +54,8 @@ module Notify
     !!notification_class(method)
   end
 
-  def self.notification_class name
-    class_name = name.camelize
+  def self.notification_class(name)
+    class_name = name.to_s.camelize
 
     # Use proper class lookup in eager loaded environments, but fallback to
     # rescuing NameError for development and other lazy loaded environments
